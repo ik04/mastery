@@ -31,7 +31,7 @@ const AuthL = () => {
           <svg
             fill="none"
             viewBox="0 0 24 24"
-            className="w-12 h-12 text-blue-500"
+            className="w-12 h-12 text-black"
             stroke="currentColor"
           >
             <path

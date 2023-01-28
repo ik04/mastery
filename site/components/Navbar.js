@@ -25,9 +25,13 @@ const Navbar = () => {
   //   };
 
   return (
-    <div className="flex bg-blue-600 justify-between">
+    <div className="flex bg-black    justify-between">
       {/* <Image src={Logo} className="h-14 p-1 w-14 mx-3" alt="CyberCell" /> */}
-      <h2 className="font-extralight text-white">Mastery</h2>
+      <div className="logo bg-zinc-800 w-40">
+        <h2 className="font-extralight  text-white h-14 p-1 w-14 mx-5 text-2xl">
+          Mastery
+        </h2>
+      </div>
       <ul className="flex  text-white  space-x-40 my-4 px-10">
         <Link href={"/home"}>
           <li className="cursor-pointer  transition duration-300 hover:text-emerald-300 ">
@@ -51,7 +55,7 @@ const Navbar = () => {
         </Link>
       </ul>
 
-      <button className="cursor-pointer log text-white w-20  p-1  bg-blue-500  transition duration-300 hover:text-black hover:bg-white">
+      <button className="cursor-pointer log text-white w-20  p-1  bg-zinc-800  transition duration-300 hover:text-black hover:bg-white">
         Logout
       </button>
     </div>

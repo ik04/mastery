@@ -5,6 +5,7 @@ const home = () => {
   return (
     <div>
       <Navbar />
+      <h1 className="text-6xl text-center font-sans">Lets goooo</h1>
     </div>
   );
 };
