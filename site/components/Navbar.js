@@ -1,28 +1,29 @@
 import React, { useContext } from "react";
 import axios from "axios";
 import Link from "next/link";
+import { GlobalContext } from "@/contexts/GlobalContext";
 
 const Navbar = () => {
   //   const router = useRouter();
-  //   const { Token, updateToken } = useContext(GlobalContext);
-  //   // console.log(`Bearer ${Token}`);
-  //   const handleLogout = async () => {
-  //     try {
-  //       console.log(Token);
-  //       const url = "http://localhost:8000/api/logout";
-  //       // console.log("god help me");
-  //       // console.log(Token);
-  //       // post(url, {}, { headers: { Authorization: `Bearer ${Token}` } });
-  //       const resp = await axios.post(url);
-  //       console.log(resp);
-  //       console.log("it runs");
-  //       setTimeout(() => {
-  //         location.href = "/";
-  //       }, 2000);
-  //     } catch (error) {
-  //       console.log(error.response);
-  //     }
-  //   };
+  const { Token, updateToken } = useContext(GlobalContext);
+  // console.log(`Bearer ${Token}`);
+  const handleLogout = async () => {
+    try {
+      console.log(Token);
+      const url = "http://localhost:8000/api/logout";
+      // console.log("god help me");
+      // console.log(Token);
+      // post(url, {}, { headers: { Authorization: `Bearer ${Token}` } });
+      const resp = await axios.post(url);
+      console.log(resp);
+      console.log("it runs");
+      setTimeout(() => {
+        location.href = "/";
+      }, 2000);
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
 
   return (
     <div className="flex bg-black    justify-between">
@@ -55,7 +56,10 @@ const Navbar = () => {
         </Link>
       </ul>
 
-      <button className="cursor-pointer log text-white w-20  p-1  bg-zinc-800  transition duration-300 hover:text-black hover:bg-white">
+      <button
+        className="cursor-pointer log text-white w-20  p-1  bg-zinc-800  transition duration-300 hover:text-black hover:bg-white"
+        onClick={handleLogout}
+      >
         Logout
       </button>
     </div>

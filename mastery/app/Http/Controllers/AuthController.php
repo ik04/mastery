@@ -77,4 +77,14 @@ class AuthController extends Controller
             'access_token' => $request -> cookie('at')
         ]);
     }
+
+    public function logout(Request $request){
+
+        $request->user()->currentAccessToken()->delete();
+        $response =  [
+            'message' => 'logged out'
+        ];
+        return response($response,200);
+
+    }
 }
