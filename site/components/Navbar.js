@@ -4,16 +4,11 @@ import Link from "next/link";
 import { GlobalContext } from "@/contexts/GlobalContext";
 
 const Navbar = () => {
-  //   const router = useRouter();
   const { Token, updateToken } = useContext(GlobalContext);
-  // console.log(`Bearer ${Token}`);
   const handleLogout = async () => {
     try {
       console.log(Token);
       const url = "http://localhost:8000/api/logout";
-      // console.log("god help me");
-      // console.log(Token);
-      // post(url, {}, { headers: { Authorization: `Bearer ${Token}` } });
       const resp = await axios.post(url);
       console.log(resp);
       console.log("it runs");

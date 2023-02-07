@@ -7,7 +7,6 @@ const AuthL = () => {
   // const [cpassword, setcPassword] = useState("");
   const [email, setemail] = useState("");
   const url = "http://localhost:8000/api/login";
-
   const login = async (e) => {
     e.preventDefault();
     try {
