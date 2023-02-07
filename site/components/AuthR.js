@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -8,6 +8,9 @@ const AuthR = () => {
   const [cpassword, setcPassword] = useState("");
   const [email, setemail] = useState("");
   const url = "http://127.0.0.1:8000/api/register";
+  useEffect(() => {
+    console.clear();
+  });
   const login = async (e) => {
     e.preventDefault();
     try {

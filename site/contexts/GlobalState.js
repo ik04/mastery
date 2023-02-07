@@ -5,7 +5,7 @@ const GlobalState = (props) => {
   const [token, setToken] = useState("");
   const [email, setEmail] = useState("");
   useEffect(() => {
-    const getdata = async () => {
+    const getUser = async () => {
       try {
         const url = "http://localhost:8000/api/user";
         const resp = await axios.get(url, {});
@@ -19,7 +19,7 @@ const GlobalState = (props) => {
         console.log(error);
       }
     };
-    getdata();
+    getUser();
   }, []);
   return (
     <GlobalContext.Provider

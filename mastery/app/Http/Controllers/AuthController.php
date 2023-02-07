@@ -59,7 +59,6 @@ class AuthController extends Controller
             ],401);
         }
         if($token = \Laravel\Sanctum\PersonalAccessToken::findToken($request->cookie("at"))){
-
             $user = $token->tokenable;
         }
         else{

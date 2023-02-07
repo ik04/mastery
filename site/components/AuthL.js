@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import axios from "axios";
 
@@ -7,6 +7,9 @@ const AuthL = () => {
   // const [cpassword, setcPassword] = useState("");
   const [email, setemail] = useState("");
   const url = "http://localhost:8000/api/login";
+  useEffect(() => {
+    console.clear();
+  });
   const login = async (e) => {
     e.preventDefault();
     try {
