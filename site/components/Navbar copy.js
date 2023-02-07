@@ -28,11 +28,33 @@ const Navbar = () => {
   return (
     <div className="flex bg-black    justify-between">
       {/* <Image src={Logo} className="h-14 p-1 w-14 mx-3" alt="CyberCell" /> */}
-      <div className="logo mx-3">
-        <h2 className="font-extralight  text-white h-14 p-1 w-14  text-4xl">
+      <div className="logo bg-zinc-800 w-40">
+        <h2 className="font-extralight  text-white h-14 p-1 w-14 mx-5 text-2xl">
           Mastery
         </h2>
       </div>
+      <ul className="flex  text-white  space-x-40 my-4 px-10">
+        <Link href={"/home"}>
+          <li className="cursor-pointer  transition duration-300 hover:text-emerald-300 ">
+            Home
+          </li>
+        </Link>
+        <Link href={"/home"}>
+          <li className="cursor-pointer  transition duration-300 hover:text-emerald-300 ">
+            About
+          </li>
+        </Link>
+        <Link href={"/home"}>
+          <li className="cursor-pointer  transition duration-300 hover:text-emerald-300 ">
+            Service
+          </li>
+        </Link>
+        <Link href={"/home"}>
+          <li className="cursor-pointer  transition duration-300 hover:text-emerald-300 ">
+            Contact
+          </li>
+        </Link>
+      </ul>
 
       <button
         className="cursor-pointer log text-white w-20  p-1  bg-zinc-800  transition duration-300 hover:text-black hover:bg-white"

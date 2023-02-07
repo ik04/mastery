@@ -17,7 +17,7 @@ const AuthL = () => {
       });
       console.log(resp.data);
       setTimeout(() => {
-        location.href = "/home";
+        location.href = "/profile";
       }, 2000);
     } catch (error) {
       console.log(error);
@@ -45,7 +45,7 @@ const AuthL = () => {
         <h2 className="text-4xl tracking-tight">Sign in into your account</h2>
         <span className="text-sm">
           or{" "}
-          <Link href="/register" className="text-blue-500">
+          <Link href="/register" className="text-slate-600">
             register a new account
           </Link>
         </span>
@@ -97,20 +97,15 @@ const AuthL = () => {
                 <span className="text-sm text-gray-700 pt-1">Remember Me</span>
               </label>
               <div className="w-1/2 text-right">
-                <a href="#" className="text-blue-500 text-sm tracking-tight">
+                <a href="#" className="text-slate-800 text-sm tracking-tight">
                   Forget your password?
                 </a>
               </div>
             </div>
             <div className="w-full md:w-full px-3 mb-6">
-              <button className="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500">
+              <button className="appearance-none block w-full bg-slate-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight transition hover:bg-black focus:outline-none focus:bg-white focus:border-gray-500">
                 Sign in
               </button>
-            </div>
-            <div className="mx-auto -mb-6 pb-1">
-              <span className="text-center text-xs text-gray-700">
-                or sign up with
-              </span>
             </div>
           </div>
         </form>
