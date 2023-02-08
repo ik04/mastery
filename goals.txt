@@ -1,0 +1,4 @@
+1)Better frontend
+2)A posting and searching system
+3)User profiles and better schema structures for the same
+4)etc.
