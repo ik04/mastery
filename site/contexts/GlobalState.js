@@ -9,7 +9,7 @@ const GlobalState = (props) => {
       try {
         const url = "http://localhost:8000/api/user";
         const resp = await axios.get(url, {});
-        console.log(resp);
+        // console.log(resp);
         setEmail(resp.data.email);
         setToken(resp.data.access_token);
         axios.defaults.headers.common[

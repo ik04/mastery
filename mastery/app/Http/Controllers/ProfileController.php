@@ -19,34 +19,29 @@ class ProfileController extends Controller
             $image = $request->file('image');
             $img_name = time().'.'.$image->getClientOriginalExtension();
             Storage::disk('public')->put($img_name,file_get_contents($image));
-            // Profile::create(['name'=>$name]);
             $url = Storage::url($img_name);
-            return response()->json(['success'=>$url]);
-            
+        }
+        else{
+            return response()->json('image issue');
+        }
             $fields = $request->validate([
+                'email' =>'string',
                 'name' =>'required|string',
                 'age' =>'required|integer',
                 'username' =>'required|string',
                 'bio' =>'string',
+                'image' => 'mimes:png,jpg,jpeg',
             ]);
             $profile = Profile::create([
+                'email' => $fields['email'],
                 'name' => $fields['name'],
                 'age' =>$fields['age'],
                 'username' =>$fields['username'],
                 'bio' =>$fields['bio'],
-                'Profile_image'=>[$url]
+                'image'=>$url
             ]);
+            return response()->json(['success'=>$profile]);
             
-            $response = [
-                'profile' => $profile,
-                
-            ];
-            return response()->json(['success'=>$response]);
-        }
-            
-        else{
-            return response()->json('plz try again');
-        }
     }
     
     

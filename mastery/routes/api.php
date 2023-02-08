@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,7 @@ Route::get('/user',[AuthController::class,'getdata']);
 
 Route::group(['middleware' =>['auth:sanctum']],function(){
     Route::post("/logout",[AuthController::class,'logout']);
-    Route::post("/profile",[AuthController::class,'create_profile']);
+    Route::post("/profile",[ProfileController::class,'create_profile']);
     
 });
     

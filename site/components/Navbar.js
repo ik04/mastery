@@ -22,7 +22,6 @@ const Navbar = () => {
 
   return (
     <div className="flex bg-black    justify-between">
-      {/* <Image src={Logo} className="h-14 p-1 w-14 mx-3" alt="CyberCell" /> */}
       <div className="logo mx-3">
         <h2 className="font-extralight  text-white h-14 p-1 w-14  text-4xl">
           Mastery
