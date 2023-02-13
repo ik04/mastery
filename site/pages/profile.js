@@ -22,11 +22,11 @@ export default profile;
 {
   /*
 TODO:
-1)Make form for the backend 
-2)Deal with the ';'
+1)Make form for the backend  done
+2)Deal with the ';' ignore?
 3)better frontend
 4)deal with api bugs
-5)figure out A BETTER schema structure to store pfps
+5)figure out A BETTER schema structure to store pfps done
 6)deny access to page once made
 7)try to implement getstaticprops/serversideprops
 */

@@ -4,7 +4,8 @@ import Link from "next/link";
 import { GlobalContext } from "@/contexts/GlobalContext";
 
 const Navbar = () => {
-  const { Token, updateToken } = useContext(GlobalContext);
+  const { Token, updateToken, isLoggedin, updateLog } =
+    useContext(GlobalContext);
   const handleLogout = async () => {
     try {
       console.log(Token);
@@ -12,6 +13,7 @@ const Navbar = () => {
       const resp = await axios.post(url);
       console.log(resp);
       console.log("it runs");
+      updateLog(false);
       setTimeout(() => {
         location.href = "/";
       }, 2000);

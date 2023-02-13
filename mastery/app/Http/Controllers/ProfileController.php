@@ -25,11 +25,11 @@ class ProfileController extends Controller
             return response()->json('image issue');
         }
             $fields = $request->validate([
-                'email' =>'string',
+                'email' =>'string', 
                 'name' =>'required|string',
                 'age' =>'required|integer',
                 'username' =>'required|string',
-                'bio' =>'string',
+                'Bio' =>'string',
                 'image' => 'mimes:png,jpg,jpeg',
             ]);
             $profile = Profile::create([
@@ -37,7 +37,7 @@ class ProfileController extends Controller
                 'name' => $fields['name'],
                 'age' =>$fields['age'],
                 'username' =>$fields['username'],
-                'bio' =>$fields['bio'],
+                'Bio' =>$fields['Bio'],
                 'image'=>$url
             ]);
             return response()->json(['success'=>$profile]);
