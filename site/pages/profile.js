@@ -1,10 +1,13 @@
 import Navbar from "@/components/Navbar";
 import Profileform from "@/components/Profileform";
 import { GlobalContext } from "@/contexts/GlobalContext";
-import React, { useContext } from "react";
+import axios from "axios";
+import React, { useContext, useState } from "react";
 
-const profile = () => {
+const profile = (props) => {
   const { token, email, updateToken, updateEmail } = useContext(GlobalContext);
+  const [isLoggedin, setLog] = useState();
+  // console.log(isLoggedin);
 
   return (
     <div>
@@ -19,15 +22,29 @@ const profile = () => {
 };
 
 export default profile;
+export async function getServerSideProps(context) {
+  const instance = axios.create({
+    withCredentials: true,
+  });
+
+  const cookie = context.req.cookies.at;
+  const url = "http://localhost:8000/api/user";
+  const resp = await instance.get(url, {});
+
+  return {
+    props: { cookie },
+  };
+}
+
 {
   /*
-TODO:
-1)Make form for the backend  done
-2)Deal with the ';' ignore?
-3)better frontend
-4)deal with api bugs
-5)figure out A BETTER schema structure to store pfps done
-6)deny access to page once made
-7)try to implement getstaticprops/serversideprops
-*/
+  TODO:
+  1)Make form for the backend  done
+  2)Deal with the ';' ignore?
+  3)better frontend
+  4)deal with api bugs
+  5)figure out A BETTER schema structure to store pfps done
+  6)deny access to page once made
+  7)try to implement getstaticprops/serversideprops
+  */
 }

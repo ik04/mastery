@@ -11,14 +11,6 @@ const Profileform = () => {
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
 
-  useEffect(() => {
-    console.log(isLoggedin);
-    if (!isLoggedin) {
-      // location.href = "/";
-      console.log(isLoggedin);
-    }
-  }, []);
-
   const create_profile = async (e) => {
     e.preventDefault();
     const url = "http://localhost:8000/api/profile";

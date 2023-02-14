@@ -14,6 +14,7 @@ const AuthL = () => {
     e.preventDefault();
     try {
       const resp = await axios.post(url, {
+        //the third bracket is for headers v imp
         email: email,
         password: password,
       });

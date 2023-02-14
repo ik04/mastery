@@ -13,7 +13,7 @@ const Navbar = () => {
       const resp = await axios.post(url);
       console.log(resp);
       console.log("it runs");
-      updateLog(false);
+
       setTimeout(() => {
         location.href = "/";
       }, 2000);

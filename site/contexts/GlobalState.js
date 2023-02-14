@@ -6,6 +6,9 @@ const GlobalState = (props) => {
   const [email, setEmail] = useState("");
   const [isprofile, setProfile] = useState(false);
   const [isLoggedin, setLog] = useState(false);
+  const log = (value) => {
+    console.log(value);
+  };
   useEffect(() => {
     const getUser = async () => {
       try {
@@ -13,17 +16,12 @@ const GlobalState = (props) => {
         const resp = await axios.get(url, {});
         setEmail(resp.data.email);
         setToken(resp.data.access_token);
-        console.log(token);
+        // console.log(token);
         axios.defaults.headers.common[
           "Authorization"
         ] = `Bearer ${resp.data.access_token}`;
-        if (typeof resp.data.access_token === "undefined") {
-          setLog(false);
-        } else {
-          setLog(true);
-          console.log(token);
-        }
       } catch (error) {
+        console.log("an error occured");
         console.log(error);
       }
     };
@@ -35,10 +33,6 @@ const GlobalState = (props) => {
         token,
         updateToken: (value) => {
           setToken(value);
-        },
-        isLoggedin,
-        updateLog: (value) => {
-          setLog(value);
         },
         isprofile,
         updateProfile: (value) => {

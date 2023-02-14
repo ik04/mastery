@@ -87,3 +87,11 @@ class AuthController extends Controller
 
     }
 }
+
+
+/*
+TODO:
+1)getting cookie to the api route for running the method
+2)make method to verify token and thus confirm login
+
+*/
