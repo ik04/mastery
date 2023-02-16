@@ -145,8 +145,8 @@ const Profileform = () => {
 export default Profileform;
 /*
 TODO:
-1) bio null issue
-2) better validation 
-3) cleanup code
+1) bio null issue done
+2) better validation  
+3) cleanup code 
 
 */

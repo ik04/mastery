@@ -77,6 +77,24 @@ class AuthController extends Controller
         ]);
     }
 
+    
+    public function login_token_check(Request $request){
+        if(!$request->hasCookie("at")){
+            return response()->json([
+                'message' => "nope"
+            ],401);
+        }
+        if($token = \Laravel\Sanctum\PersonalAccessToken::findToken($request->cookie("at"))){
+            $user = $token->tokenable;
+        }
+        else{
+            return response()->json([
+                'message' => "invalid token"
+            ],401);
+        }
+        return response()->noContent();
+    }
+
     public function logout(Request $request){
 
         $request->user()->currentAccessToken()->delete();
@@ -92,6 +110,6 @@ class AuthController extends Controller
 /*
 TODO:
 1)getting cookie to the api route for running the method
-2)make method to verify token and thus confirm login
+2)make method to verify token and thus confirm login done
 
 */

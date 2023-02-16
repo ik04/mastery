@@ -19,6 +19,7 @@ use App\Http\Controllers\ProfileController;
 Route::post('/register',[AuthController::class,'register']);
 Route::post('/login',[AuthController::class,'login']);
 Route::get('/user',[AuthController::class,'getdata']);
+Route::post('/islog',[AuthController::class,'login_token_check']);
 
 Route::group(['middleware' =>['auth:sanctum']],function(){
     Route::post("/logout",[AuthController::class,'logout']);
