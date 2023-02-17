@@ -26,8 +26,6 @@ class AuthController extends Controller
 
     }
     public function login(Request $request){
-
-
         $fields = $request->validate([
             'email' =>'required|string',
             'password' =>'required|string',
@@ -81,7 +79,7 @@ class AuthController extends Controller
     public function login_token_check(Request $request){
         if(!$request->hasCookie("at")){
             return response()->json([
-                'message' => "nope"
+                'message' => "token not found"
             ],401);
         }
         if($token = \Laravel\Sanctum\PersonalAccessToken::findToken($request->cookie("at"))){

@@ -15,7 +15,8 @@ class Profile extends Model
         'email',
         'age',
         'username',
-        'Bio'
+        'Bio',
+        'profile_created'
     ];
 
     

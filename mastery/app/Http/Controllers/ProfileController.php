@@ -5,12 +5,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 
-// 'image',
-// 'email',
-// 'name',
-// 'age',
-// 'username',
-// 'Bio'
+
 
 class ProfileController extends Controller
 {
@@ -24,6 +19,8 @@ class ProfileController extends Controller
         else{
             return response()->json('image issue');
         }
+
+        
             $fields = $request->validate([
                 'email' =>'string', 
                 'name' =>'required|string',
@@ -31,6 +28,7 @@ class ProfileController extends Controller
                 'username' =>'required|string',
                 'Bio' =>'string',
                 'image' => 'mimes:png,jpg,jpeg',
+                'profile_created' =>'boolean'
             ]);
             $profile = Profile::create([
                 'email' => $fields['email'],
@@ -38,10 +36,36 @@ class ProfileController extends Controller
                 'age' =>$fields['age'],
                 'username' =>$fields['username'],
                 'Bio' =>$fields['Bio'],
-                'image'=>$url
+                'image'=>$url,
+                'profile_created'=>true
             ]);
             return response()->json(['success'=>$profile]);
             
+    }
+
+    public function get_profile(Request $request){
+
+        $fields = $request->validate([
+            'email' =>'required|string',
+        ]);
+        $profile = Profile::where('email',$fields['email'])->first();
+
+        if(!$profile){
+            return response(
+                [
+                    'message' => 'profile has not been created'
+
+                ],404
+                );
+        }else{
+           
+            $response = [
+                'profile' => $profile,
+                
+            ];
+            return response()->json($response,200);
+        }
+        
     }
     
     

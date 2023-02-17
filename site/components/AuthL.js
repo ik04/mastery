@@ -1,31 +1,31 @@
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
-import axios from "axios";
+import React, { useEffect, useState } from "react"
+import Link from "next/link"
+import axios from "axios"
 
-const AuthL = () => {
-  const [password, setPassword] = useState("");
+const AuthL = (props) => {
+  const [password, setPassword] = useState("")
   // const [cpassword, setcPassword] = useState("");
-  const [email, setemail] = useState("");
-  const url = "http://localhost:8000/api/login";
+  const [email, setemail] = useState("")
+  const url = "http://localhost:8000/api/login"
   useEffect(() => {
-    console.clear();
-  });
+    console.clear()
+  })
   const login = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
       const resp = await axios.post(url, {
         //the third bracket is for headers v imp
         email: email,
         password: password,
-      });
-      console.log(resp.data);
+      })
+      console.log(resp.data)
       setTimeout(() => {
-        location.href = "/profile";
-      }, 2000);
+        location.href = "/profile"
+      }, 2000)
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  };
+  }
 
   return (
     <>
@@ -45,7 +45,7 @@ const AuthL = () => {
             />
           </svg>
         </div>
-        <h2 className="text-4xl tracking-tight">Sign in into your account</h2>
+        <h2 className="text-4xl tracking-tight">Sign in into your account </h2>
         <span className="text-sm">
           or{" "}
           <Link href="/register" className="text-slate-600">
@@ -114,7 +114,46 @@ const AuthL = () => {
         </form>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default AuthL;
+export default AuthL
+
+/*
+TODO:
+1) implement the function below to redirect on sign in page 
+*/
+
+// export async function getServerSideProps(context) {
+//   const url = "http://localhost:8000/api/user"
+//   const cookie = context.req.cookies.at
+//   const resp1 = await axios.get(url, { headers: { Cookie: `at=${cookie}` } })
+//   axios.defaults.headers.common[
+//     "Authorization"
+//   ] = `Bearer ${resp1.data.access_token}`
+//   const email = resp1.data.email
+
+//   try {
+//     const instance = axios.create({
+//       withCredentials: true,
+//     })
+//     const url = "http://localhost:8000/api/islog"
+//     const resp = await instance.post(
+//       url,
+//       {},
+//       { headers: { Cookie: `at=${cookie}` } }
+//     )
+//     if (resp) {
+//       return {
+//         redirect: {
+//           permanent: false,
+//           destination: "/home",
+//         },
+//       }
+//     }
+//   } catch (error) {}
+
+//   return {
+//     props: {}, // will be passed to the page component as props
+//   }
+// }

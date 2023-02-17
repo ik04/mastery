@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('age');
             $table->string('username');
             $table->string('Bio')->nullable();
+            $table->boolean('profile_created')->default(false);
             $table->timestamps();
         });
     }
