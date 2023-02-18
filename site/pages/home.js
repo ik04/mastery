@@ -13,8 +13,11 @@ export default home
 
 /*
 TODO:
+
 1)design front end
 2)run the profile data route from this page by getting email from context
 3)render elements dynamically 
 4)start working on big boy features
+5)work on update profile features (put request)
+6)improve frontend
 */
