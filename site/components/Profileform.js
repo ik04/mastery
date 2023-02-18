@@ -1,33 +1,36 @@
-import React, { useContext, useEffect, useState } from "react";
-import { GlobalContext } from "@/contexts/GlobalContext";
-import axios from "axios";
+import React, { useContext, useEffect, useState } from "react"
+import { GlobalContext } from "@/contexts/GlobalContext"
+import axios from "axios"
 
 const Profileform = () => {
   const { email, isprofile, updateProfile, isLoggedin, updateLog } =
-    useContext(GlobalContext);
-  const [image, setImage] = useState("");
-  const [age, setAge] = useState();
-  const [username, setUsername] = useState("");
-  const [name, setName] = useState("");
-  const [bio, setBio] = useState("");
+    useContext(GlobalContext)
+  const [image, setImage] = useState("")
+  const [age, setAge] = useState()
+  const [username, setUsername] = useState("")
+  const [name, setName] = useState("")
+  const [bio, setBio] = useState("")
 
   const create_profile = async (e) => {
-    e.preventDefault();
-    const url = "http://localhost:8000/api/profile";
+    e.preventDefault()
+    const url = "http://localhost:8000/api/profile"
     try {
-      const formdata = new FormData();
-      formdata.append("email", email);
-      formdata.append("name", name);
-      formdata.append("age", age);
-      formdata.append("username", username);
-      formdata.append("Bio", bio);
-      formdata.append("image", image);
-      const resp = await axios.post(url, formdata);
-      console.log(resp);
+      const formdata = new FormData()
+      formdata.append("email", email)
+      formdata.append("name", name)
+      formdata.append("age", age)
+      formdata.append("username", username)
+      formdata.append("Bio", bio)
+      formdata.append("image", image)
+      const resp = await axios.post(url, formdata)
+      console.log(resp)
+      setTimeout(() => {
+        location.href = "/home"
+      }, 2000)
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  };
+  }
   return (
     <div className="relative left-64 mt-20">
       <div className="md:grid md:grid-cols-3 md:gap-6">
@@ -139,10 +142,10 @@ const Profileform = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Profileform;
+export default Profileform
 /*
 TODO:
 1) bio null issue done

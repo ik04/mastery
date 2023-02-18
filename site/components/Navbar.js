@@ -1,31 +1,30 @@
-import React, { useContext } from "react";
-import axios from "axios";
-import Link from "next/link";
-import { GlobalContext } from "@/contexts/GlobalContext";
+import React, { useContext } from "react"
+import axios from "axios"
+import Link from "next/link"
+import { GlobalContext } from "@/contexts/GlobalContext"
 
 const Navbar = () => {
-  const { Token, updateToken, isLoggedin, updateLog } =
-    useContext(GlobalContext);
+  const { Token, updateToken } = useContext(GlobalContext)
   const handleLogout = async () => {
     try {
-      console.log(Token);
-      const url = "http://localhost:8000/api/logout";
-      const resp = await axios.post(url);
-      console.log(resp);
-      console.log("it runs");
+      console.log(Token)
+      const url = "http://localhost:8000/api/logout"
+      const resp = await axios.post(url)
+      console.log(resp)
+      console.log("it runs")
 
       setTimeout(() => {
-        location.href = "/";
-      }, 2000);
+        location.href = "/"
+      }, 2000)
     } catch (error) {
-      console.log(error.response);
+      console.log(error.response)
     }
-  };
+  }
 
   return (
     <div className="flex bg-black    justify-between">
       <div className="logo mx-3">
-        <h2 className="font-extralight  text-white h-14 p-1 w-14  text-4xl">
+        <h2 className="font-extralight  text-white h-14 p-1 w-14  text-4xl cursor-pointer">
           Mastery
         </h2>
       </div>
@@ -37,7 +36,7 @@ const Navbar = () => {
         Logout
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

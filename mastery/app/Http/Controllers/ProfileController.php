@@ -43,7 +43,7 @@ class ProfileController extends Controller
             
     }
 
-    public function get_profile(Request $request){
+    public function check_profile(Request $request){
 
         $fields = $request->validate([
             'email' =>'required|string',
@@ -63,12 +63,34 @@ class ProfileController extends Controller
                 'profile' => $profile,
                 
             ];
-            return response()->json($response,200);
+            return response()->json($response,200); // will check profile_created in nextjs
         }
         
     }
     
-    
+    public function get_profile_data(Request $request){
+        if(!$request->hasCookie("at")){
+            return response()->json([
+                'message' => "Unauthenticated"
+            ],401);
+        }
+        if($token = \Laravel\Sanctum\PersonalAccessToken::findToken($request->cookie("at"))){
+            $user = $token->tokenable;
+        }
+        else{
+            return response()->json([
+                'message' => "unset or invalid token"
+            ],202);
+        }
+        if(is_null($user)){
+            return response()->json([
+                'message' => "user is null"
+            ],401);
+        }
+        return response() -> json(
+            $profile = Profile::where('email',$user->email)->first(),
+        );
+    }
     
 }
 //Todo
@@ -79,4 +101,5 @@ class ProfileController extends Controller
 4)look up migration docs    done
 5)clean code and refactor
 6)better frontend 
+7) work on security flaws
 */ 

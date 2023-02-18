@@ -1,5 +1,5 @@
-{
-/* <div>
+<!-- profile form -->
+<!-- <div>
     <label class="block text-sm font-medium text-gray-700">
         Cover photo
     </label>
@@ -24,5 +24,20 @@
             </p>
         </div>
     </div>
-</div> */
-}
+</div>  -->
+
+
+
+
+<!-- pic display -->
+<!-- <div className="row">
+    <div className="col-sm">
+      <div className="flex flex-wrap justify-center">
+        <img
+          className="mx-5 my-5"
+          width={500}
+          src={"http://localhost:8000" + userimg}
+        />
+      </div>
+    </div>
+  </div> -->
