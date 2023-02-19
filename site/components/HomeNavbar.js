@@ -21,7 +21,7 @@ const HomeNavbar = () => {
   }
 
   return (
-    <div className="flex bg-black justify-between">
+    <div className="flex bg-black justify-between sticky">
       <div className="block">
         <div className="logo mx-3 flex space-x-2 justify-center align-middle">
           <img
