@@ -92,12 +92,13 @@ class ProfileController extends Controller
         );
     }
     
+    
 }
 //Todo
 /*
 1)implement other properties
 2)perfect image upload and display       done
-3)redirect to a page  
+3)redirect to a page     done
 4)look up migration docs    done
 5)clean code and refactor
 6)better frontend 

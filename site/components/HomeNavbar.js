@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import axios from "axios"
-// import Link from "next/link"
+import Link from "next/link"
 import { GlobalContext } from "@/contexts/GlobalContext"
 import { HomeContext } from "@/contexts/HomeContext"
 
@@ -23,15 +23,17 @@ const HomeNavbar = () => {
   return (
     <div className="flex bg-black justify-between sticky">
       <div className="block">
-        <div className="logo mx-3 flex space-x-2 justify-center align-middle">
-          <img
-            className="mx-5 my-5 w-14 h-14 rounded-full  border-gray-500 border-3 shadow-sm"
-            src={"http://localhost:8000" + userimg}
-          />
-          <h2 className="font-extralight  text-white h-14 p-1 w-14 mt-6  text-3xl cursor-pointer">
-            {username}
-          </h2>
-        </div>
+        <Link href={"/profilePage"}>
+          <div className="logo mx-3 flex space-x-2 justify-center align-middle">
+            <img
+              className="mx-5 my-5 w-14 h-14 rounded-full  border-gray-500 border-3 shadow-sm"
+              src={"http://localhost:8000" + userimg}
+            />
+            <h2 className="font-extralight  text-white h-14 p-1 w-14 mt-6  text-3xl cursor-pointer">
+              {username}
+            </h2>
+          </div>
+        </Link>
       </div>
 
       <button

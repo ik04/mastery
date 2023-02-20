@@ -102,12 +102,17 @@ class AuthController extends Controller
         return response($response,200);
 
     }
+
+    
 }
+
+
+
 
 
 /*
 TODO:
-1)getting cookie to the api route for running the method
+1)getting cookie to the api route for running the method done
 2)make method to verify token and thus confirm login done
 
 */

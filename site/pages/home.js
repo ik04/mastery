@@ -1,19 +1,19 @@
 import React, { useContext, useEffect } from "react"
-import { HomeContext } from "@/contexts/HomeContext"
+// import { HomeContext } from "@/contexts/HomeContext"
 import HomeNavbar from "@/components/HomeNavbar"
 import Sidebar from "@/components/Sidebar"
 import Card from "@/components/Card"
 
 const home = () => {
-  const {
-    userid,
-    userimg,
-    useremail,
-    userBio,
-    userAge,
-    userRealname,
-    username,
-  } = useContext(HomeContext)
+  // const {
+  //   userid,
+  //   userimg,
+  //   useremail,
+  //   userBio,
+  //   userAge,
+  //   userRealname,
+  //   username,
+  // } = useContext(HomeContext)
   return (
     <div>
       <HomeNavbar />

@@ -5,7 +5,6 @@ const GlobalState = (props) => {
   const [token, setToken] = useState("")
   const [email, setEmail] = useState("")
   const [isprofile, setProfile] = useState(false)
-  const [isLoggedin, setLog] = useState(false)
   const log = (value) => {
     console.log(value)
   }
