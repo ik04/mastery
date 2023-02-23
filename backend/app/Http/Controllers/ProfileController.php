@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Profile;
+use Exception;
+use Hamcrest\Core\IsEqual;
 use Illuminate\Http\Request;
+use PHPUnit\Framework\Constraint\IsEmpty;
 
 use function PHPUnit\Framework\isEmpty;
+use function PHPUnit\Framework\isNull;
 
 class ProfileController extends Controller
 {
@@ -93,22 +97,33 @@ class ProfileController extends Controller
     }
     
     public function search_user(Request $request){
-        if($request->has('search')){
+        try{
+            
             $fields = $request->validate([
                 'search' =>'string',
             ]);
-            if(isEmpty($fields['search'])){
+            if($request->has('search')){
+               
+                $users = Profile::select('image','name','username')->where('name','LIKE','%'.$fields['search'].'%')->orWhere('username','LIKE','%'.$fields['search'].'%')->get();
+
+
+                // $users = Profile::select('image','name','username')->where(['name','LIKE','%'.$fields['search'].'%'],['username','LIKE','%'.$fields['search'].'%'])->get();
+
+
+                
+                return response()->json($users,200);
+                
+                
+            }else{
                 $users = Profile::select('image','name','username')->get();
                 return response()->json($users,200);
-            }elseif($fields['search']->isNot()){
-                $users = Profile::select('image','name','username')->where('name','username')->like($fields["search"]);
-                return response()->json($users,200);
-
-            }else{
-                return response()->json("an error has occured",500);
+                // return response()->json("an error has occured",500);
             }
+        }catch(Exception $e){
+            return response($e->getMessage(),500);
         }
-    }
+        
+        }
     
 }
 //Todo

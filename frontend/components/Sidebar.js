@@ -15,10 +15,10 @@ const Sidebar = () => {
         <Link href={"/search"}>Search</Link>
       </button>
       <button className="bg-black hover:bg-white hover:text-black transition text-white font-bold py-5 px-4 mx-5 rounded-full">
-        <Link href={"#"}>Create</Link>
+        <Link href={"/home"}>Create</Link>
       </button>
       <button className="bg-black hover:bg-white hover:text-black transition text-white font-bold py-5 px-4 mx-5 rounded-full">
-        <Link href={"#"}>Settings</Link>
+        <Link href={"/home"}>Settings</Link>
       </button>
     </div>
   )
