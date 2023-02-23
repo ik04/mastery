@@ -1,3 +1,4 @@
+import Link from "next/link"
 import React from "react"
 
 const Sidebar = () => {
@@ -7,7 +8,7 @@ const Sidebar = () => {
         Mastery
       </h1>
       <button className="bg-black hover:bg-white hover:text-black transition text-white font-bold mt-20 py-5 px-4 mx-5 rounded-full">
-        Home
+        <Link href={"/home"}>Home</Link>
       </button>
       <button className="bg-black hover:bg-white hover:text-black transition text-white font-bold py-5 px-4 mx-5 rounded-full">
         Search

@@ -92,6 +92,9 @@ class ProfileController extends Controller
         );
     }
     
+    public function search_user(Request $request){
+        
+    }
     
 }
 //Todo

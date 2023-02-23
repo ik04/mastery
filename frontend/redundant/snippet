@@ -41,3 +41,32 @@
       </div>
     </div>
   </div> -->
+
+
+
+<!-- Image resize  -->
+<!-- 
+use Intervention\Image\Facades\Image;
+
+function resizeAndRoundImage($imagePath, $outputSize) {
+    // Open the image using Intervention Image
+    $image = Image::make($imagePath);
+
+    // Resize the image to fit within the output size while maintaining aspect ratio
+    $image->fit($outputSize, $outputSize, function($constraint) {
+        $constraint->upsize();
+    });
+
+    // Create a new canvas with a transparent background to fit the rounded image
+    $canvas = Image::canvas($outputSize, $outputSize, '#00000000');
+
+    // Draw the resized image onto the canvas as a circle
+    $canvas->circle($outputSize, $outputSize/2, $outputSize/2, function($draw) use ($image) {
+        $draw->border(0, '#00000000'); // Make the circle border transparent
+        $draw->image($image, 0, 0, $image->width(), $image->height());
+    });
+
+    // Save the resulting image to a file or output it to the browser
+    $canvas->save('path/to/output/image.png');
+}
+ -->
