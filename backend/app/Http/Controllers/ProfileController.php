@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 
-
+use function PHPUnit\Framework\isEmpty;
 
 class ProfileController extends Controller
 {
@@ -93,7 +93,21 @@ class ProfileController extends Controller
     }
     
     public function search_user(Request $request){
-        
+        if($request->has('search')){
+            $fields = $request->validate([
+                'search' =>'string',
+            ]);
+            if(isEmpty($fields['search'])){
+                $users = Profile::select('image','name','username')->get();
+                return response()->json($users,200);
+            }elseif($fields['search']->isNot()){
+                $users = Profile::select('image','name','username')->where('name','username')->like($fields["search"]);
+                return response()->json($users,200);
+
+            }else{
+                return response()->json("an error has occured",500);
+            }
+        }
     }
     
 }

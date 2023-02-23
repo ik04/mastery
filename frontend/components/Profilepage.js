@@ -1,5 +1,6 @@
 import React, { useContext } from "react"
 import { HomeContext } from "@/contexts/HomeContext"
+import { useRouter } from "next/router"
 
 const Profilepage = (props) => {
   const {
@@ -11,6 +12,9 @@ const Profilepage = (props) => {
     userRealname,
     username,
   } = useContext(HomeContext)
+  const redirect = () => {
+    location.href = "/home"
+  }
   return (
     <div>
       <div className="p-16">
@@ -48,8 +52,11 @@ const Profilepage = (props) => {
             </div>
 
             <div className="space-x-8 flex justify-between mt-32 md:mt-0 md:justify-center">
-              <button className="text-white py-2 px-4 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
-                Connect
+              <button
+                onClick={redirect}
+                className="text-white py-2 px-4 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
+              >
+                Home
               </button>
               <button className="text-white py-2 px-4 uppercase rounded bg-gray-700 hover:bg-gray-800 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
                 Message
