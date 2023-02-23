@@ -6,8 +6,12 @@ import React from "react"
 const search = () => {
   return (
     <div>
-      <HomeNavbar />
-      <Sidebar />
+      <div className="">
+        <HomeNavbar />
+      </div>
+      <div className="">
+        <Sidebar title="Search" />
+      </div>
       <div className="absolute left-96 my-14 w-3/4">
         <Table />
       </div>

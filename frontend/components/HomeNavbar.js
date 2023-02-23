@@ -4,7 +4,7 @@ import Link from "next/link"
 import { GlobalContext } from "@/contexts/GlobalContext"
 import { HomeContext } from "@/contexts/HomeContext"
 
-const HomeNavbar = () => {
+const HomeNavbar = (props) => {
   const { Token, updateToken } = useContext(GlobalContext)
   const { userimg, username } = useContext(HomeContext)
   const handleLogout = async () => {
@@ -21,7 +21,7 @@ const HomeNavbar = () => {
   }
 
   return (
-    <div className="flex bg-black justify-between sticky">
+    <div className="flex bg-black justify-between sticky z-50">
       <div className="block">
         <Link href={"/profilePage"}>
           <div className="logo mx-3 flex space-x-2 justify-center align-middle">

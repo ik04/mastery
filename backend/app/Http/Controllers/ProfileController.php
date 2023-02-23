@@ -115,7 +115,7 @@ class ProfileController extends Controller
                 
                 
             }else{
-                $users = Profile::select('image','name','username')->get();
+                $users = Profile::select('image','name','username')->limit(8)->get();
                 return response()->json($users,200);
                 // return response()->json("an error has occured",500);
             }

@@ -1,25 +1,36 @@
 import Link from "next/link"
 import React from "react"
 
-const Sidebar = () => {
+const Sidebar = (props) => {
   return (
-    <div className="sidebar flex flex-col bg-gray-200 w-72 h-screen space-y-28 fixed">
+    <div className="sidebar flex flex-col bg-gray-200 w-72 h-screen space-y-28 fixed ">
       <h1 className="font-mono mx-20  text-black h-14 p-1 w-14 mt-4  text-3xl cursor-pointer">
-        Mastery
+        {props.title}
       </h1>
-      .
-      <button className="bg-black hover:bg-white hover:text-black transition text-white font-bold mt-20 py-5 px-4 mx-5 rounded-full">
-        <Link href={"/home"}>Home</Link>
-      </button>
-      <button className="bg-black hover:bg-white hover:text-black transition text-white font-bold py-5 px-4 mx-5 rounded-full">
-        <Link href={"/search"}>Search</Link>
-      </button>
-      <button className="bg-black hover:bg-white hover:text-black transition text-white font-bold py-5 px-4 mx-5 rounded-full">
-        <Link href={"/home"}>Create</Link>
-      </button>
-      <button className="bg-black hover:bg-white hover:text-black transition text-white font-bold py-5 px-4 mx-5 rounded-full">
-        <Link href={"/home"}>Settings</Link>
-      </button>
+      <Link
+        className="bg-black hover:bg-white hover:text-black transition text-white font-bold mt-10 py-5 px-4 mx-5 rounded-full text-center"
+        href={"/home"}
+      >
+        Home
+      </Link>
+      <Link
+        className="bg-black hover:bg-white hover:text-black transition text-white font-bold py-5 px-4 mx-5 rounded-full text-center"
+        href={"/search"}
+      >
+        Search
+      </Link>
+      <Link
+        className="bg-black hover:bg-white hover:text-black transition text-white font-bold py-5 px-4 mx-5 rounded-full text-center"
+        href={"/home"}
+      >
+        Create
+      </Link>
+      <Link
+        className="bg-black hover:bg-white hover:text-black transition text-white font-bold py-5 px-4 mx-5 rounded-full text-center"
+        href={"/home"}
+      >
+        Settings
+      </Link>
     </div>
   )
 }

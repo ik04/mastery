@@ -17,7 +17,7 @@ const home = () => {
   return (
     <div>
       <HomeNavbar />
-      <Sidebar />
+      <Sidebar title="Mastery" />
       <div className="absolute right-56 my-14 ">
         <Card />
       </div>
