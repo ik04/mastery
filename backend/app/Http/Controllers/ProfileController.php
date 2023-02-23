@@ -13,7 +13,7 @@ use function PHPUnit\Framework\isNull;
 
 class ProfileController extends Controller
 {
-    public function create_profile(Request $request){
+    public function createProfile(Request $request){
         if($request->has('image')){
             $image = $request->file('image');
             $img_name = time().'.'.$image->getClientOriginalExtension();
@@ -29,7 +29,7 @@ class ProfileController extends Controller
                 'email' =>'string', 
                 'name' =>'required|string',
                 'age' =>'required|integer',
-                'username' =>'required|string',
+                'username' =>'required|string|unique:profiles',
                 'Bio' =>'string',
                 'image' => 'mimes:png,jpg,jpeg',
                 'profile_created' =>'boolean'
@@ -47,7 +47,7 @@ class ProfileController extends Controller
             
     }
 
-    public function check_profile(Request $request){
+    public function checkProfile(Request $request){
 
         $fields = $request->validate([
             'email' =>'required|string',
@@ -72,7 +72,7 @@ class ProfileController extends Controller
         
     }
     
-    public function get_profile_data(Request $request){
+    public function getProfileData(Request $request){
         if(!$request->hasCookie("at")){
             return response()->json([
                 'message' => "Unauthenticated"
@@ -96,7 +96,9 @@ class ProfileController extends Controller
         );
     }
     
-    public function search_user(Request $request){
+
+    
+    public function searchUser(Request $request){
         try{
             
             $fields = $request->validate([
@@ -105,12 +107,7 @@ class ProfileController extends Controller
             if($request->has('search')){
                
                 $users = Profile::select('image','name','username')->where('name','LIKE','%'.$fields['search'].'%')->orWhere('username','LIKE','%'.$fields['search'].'%')->get();
-
-
                 // $users = Profile::select('image','name','username')->where(['name','LIKE','%'.$fields['search'].'%'],['username','LIKE','%'.$fields['search'].'%'])->get();
-
-
-                
                 return response()->json($users,200);
                 
                 
@@ -124,8 +121,23 @@ class ProfileController extends Controller
         }
         
         }
-    
+    public function searchResult(Request $request){
+        try{
+            
+            $fields = $request->validate([
+                'username' =>'string',
+            ]);
+                $users = Profile::select('image','name','username','Bio','age')->where('username',$fields['username'])->get();
+                return response()->json($users,200);
+        }catch(Exception $e){
+            return response($e->getMessage(),500);
+        }
+        
+        }
 }
+
+
+
 //Todo
 /*
 1)implement other properties

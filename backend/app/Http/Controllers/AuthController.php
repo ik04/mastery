@@ -50,7 +50,7 @@ class AuthController extends Controller
         }
     }
 
-    public function getdata(Request $request){
+    public function getData(Request $request){
         if(!$request->hasCookie("at")){
             return response()->json([
                 'message' => "Unauthenticates1"
@@ -76,7 +76,7 @@ class AuthController extends Controller
     }
 
     
-    public function login_token_check(Request $request){
+    public function loginTokenCheck(Request $request){
         if(!$request->hasCookie("at")){
             return response()->json([
                 'message' => "token not found"

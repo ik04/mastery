@@ -1,17 +1,8 @@
 import React, { useContext } from "react"
-import { HomeContext } from "@/contexts/HomeContext"
-import { useRouter } from "next/router"
+
+// import { useRouter } from "next/router"
 
 const Profilepage = (props) => {
-  const {
-    userid,
-    userimg,
-    useremail,
-    userBio,
-    userAge,
-    userRealname,
-    username,
-  } = useContext(HomeContext)
   const redirect = () => {
     location.href = "/home"
   }
@@ -43,9 +34,9 @@ const Profilepage = (props) => {
                   fill="currentColor"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                   />
                 </svg>
               </div>
@@ -66,10 +57,10 @@ const Profilepage = (props) => {
 
           <div className="mt-20 text-center border-b pb-12">
             <h1 className="text-4xl font-medium text-gray-700">
-              {userRealname},{" "}
-              <span className="font-light text-gray-500">{userAge}</span>
+              {props.realName}{" "}
+              <span className="font-light text-gray-500">{props.age}</span>
             </h1>
-            <p className="font-light text-gray-600 mt-3">{username}</p>
+            <p className="font-light text-gray-600 mt-3">{props.username}</p>
 
             {/* <p className="mt-8 text-gray-500">
               Solution Manager - Creative Tim Officer
@@ -79,7 +70,7 @@ const Profilepage = (props) => {
 
           <div className="mt-12 flex flex-col justify-center">
             <p className="text-gray-600 text-center font-light lg:px-16">
-              {userBio}
+              {props.bio}
             </p>
             <button className="text-indigo-500 py-2 px-4  font-medium mt-4">
               Posts

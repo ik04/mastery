@@ -1,4 +1,5 @@
 import axios from "axios"
+import Link from "next/link"
 import React, { useState } from "react"
 
 const Table = () => {
@@ -84,9 +85,11 @@ const Table = () => {
                   alt=""
                 />
                 <div className="ml-3 overflow-hidden">
-                  <p className="text-sm font-medium text-slate-900">
-                    {result.name}
-                  </p>
+                  <Link href={`/user/${result.username}`}>
+                    <p className="text-sm font-medium text-slate-900">
+                      {result.name}
+                    </p>
+                  </Link>
                   <p className="text-sm text-slate-500 truncate">
                     {result.username}
                   </p>
@@ -106,7 +109,7 @@ export default Table
 /*
 TODO:
 1) make dynamic username pages (using useParam) and use the profilepage as template
-2)make homenav better (make it an actual navbar lmao)
+2)make homenav better (make it an actual navbar lmao)x
 3) Lazy loading + Pagination to load all users
 4) after review frm armaan move onto new feature (messaging is the last)
 */
