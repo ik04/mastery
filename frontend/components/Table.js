@@ -2,6 +2,7 @@ import axios from "axios"
 import React, { useState } from "react"
 
 const Table = () => {
+  const [error, setError] = useState("")
   const [search, setSearch] = useState("")
   const [results, setResults] = useState([])
   const searchUser = async (e) => {
@@ -24,6 +25,9 @@ const Table = () => {
       resp.data.forEach((element) => {
         searchResults.push(element)
       })
+      if (searchResults.length == 0) {
+        setError("No Such user Found")
+      }
       setResults(searchResults)
     }
   }
@@ -69,30 +73,38 @@ const Table = () => {
         </div>
       </form>
 
-      {/* results */}
-      {results.map((result, i) => {
-        return (
-          <ul role="list" className="p-6 divide-y divide-slate-200 w-full">
-            <li className="flex py-4 first:pt-0 last:pb-0 ">
-              <img
-                className="h-10 w-10 rounded-full"
-                src={"http://localhost:8000" + result.image}
-                alt=""
-              />
-              <div className="ml-3 overflow-hidden">
-                <p className="text-sm font-medium text-slate-900">
-                  {result.name}
-                </p>
-                <p className="text-sm text-slate-500 truncate">
-                  {result.username}
-                </p>
-              </div>
-            </li>
-          </ul>
-        )
-      })}
+      {results.length != 0 ? (
+        results.map((result, i) => {
+          return (
+            <ul role="list" className="p-6 divide-y divide-slate-200 w-full">
+              <li className="flex py-4 first:pt-0 last:pb-0 ">
+                <img
+                  className="h-10 w-10 rounded-full"
+                  src={"http://localhost:8000" + result.image}
+                  alt=""
+                />
+                <div className="ml-3 overflow-hidden">
+                  <p className="text-sm font-medium text-slate-900">
+                    {result.name}
+                  </p>
+                  <p className="text-sm text-slate-500 truncate">
+                    {result.username}
+                  </p>
+                </div>
+              </li>
+            </ul>
+          )
+        })
+      ) : (
+        <p>{error}</p>
+      )}
     </>
   )
 }
 
 export default Table
+/*
+TODO:
+1) make dynamic username pages (using useParam) and use the profilepage as template
+2)make homenav better (make it an actual navbar lmao)
+*/
