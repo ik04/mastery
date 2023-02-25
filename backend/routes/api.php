@@ -24,9 +24,11 @@ Route::post('/result',[ProfileController::class,'searchResult']);
 
 
 Route::group(['middleware' =>['auth:sanctum']],function(){
+    Route::post('/islog',[AuthController::class, function() {
+        return response()->noContent();
+    }]);
     Route::post('/search',[ProfileController::class,'searchUser']);
     Route::post("/logout",[AuthController::class,'logout']);
     Route::post("/profile",[ProfileController::class,'createProfile']);
-    Route::post('/islog',[AuthController::class,'loginTokenCheck']);
     Route::post('/profileData',[ProfileController::class,'checkProfile']);
 });
