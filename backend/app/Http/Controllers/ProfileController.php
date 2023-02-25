@@ -1,5 +1,13 @@
 <?php
 
+/**
+* 25th February, 2023 1:49pm (IST)
+* Wellick
+*
+* TODO: Make UserController.php and shift the entire logic of this controller to UserController
+* TODO: Merge profile and users table into same table called "users"
+*/
+
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Profile;
@@ -14,6 +22,29 @@ use function PHPUnit\Framework\isNull;
 class ProfileController extends Controller
 {
     public function createProfile(Request $request){
+         /**
+          * 25th February, 2023 1:40pm (IST)
+          * Wellick
+          *
+          * Validating image
+          */
+        /*
+        $validation = Validator::make($request->all(), [
+               'email' =>'string', 
+                'name' =>'required|string',
+                'age' =>'required|integer',
+                'username' =>'required|string|unique:profiles',
+                'Bio' =>'string',
+                'image' => 'mimes:png,jpg,jpeg',
+                'profile_created' =>'boolean',
+                "image" => "required|mimes:jpeg,jpg,png"
+        ]);
+        
+        if ($validation->fails()) {
+            // Throw error / response
+        }
+        */
+        
         if($request->has('image')){
             $image = $request->file('image');
             $img_name = time().'.'.$image->getClientOriginalExtension();
@@ -24,7 +55,9 @@ class ProfileController extends Controller
             return response()->json('image issue');
         }
 
-        
+        /*
+        * The validation has been made on the top
+        * Uncomment that and then delete this validation
             $fields = $request->validate([
                 'email' =>'string', 
                 'name' =>'required|string',
@@ -34,6 +67,9 @@ class ProfileController extends Controller
                 'image' => 'mimes:png,jpg,jpeg',
                 'profile_created' =>'boolean'
             ]);
+            */
+           
+            
             $profile = Profile::create([
                 'email' => $fields['email'],
                 'name' => $fields['name'],
@@ -41,9 +77,12 @@ class ProfileController extends Controller
                 'username' =>$fields['username'],
                 'Bio' =>$fields['Bio'],
                 'image'=>$url,
-                'profile_created'=>true
+                'profile_created'=>true // Consider removing this from the table / database
             ]);
-            return response()->json(['success'=>$profile]);
+        
+            return response()->json([
+                
+            ], 201);
             
     }
 
