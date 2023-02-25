@@ -14,6 +14,7 @@ use App\Models\Profile;
 use Exception;
 use Hamcrest\Core\IsEqual;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use PHPUnit\Framework\Constraint\IsEmpty;
 
 use function PHPUnit\Framework\isEmpty;
@@ -28,22 +29,22 @@ class ProfileController extends Controller
           *
           * Validating image
           */
-        /*
-        $validation = Validator::make($request->all(), [
-               'email' =>'string', 
-                'name' =>'required|string',
-                'age' =>'required|integer',
-                'username' =>'required|string|unique:profiles',
-                'Bio' =>'string',
-                'image' => 'mimes:png,jpg,jpeg',
-                'profile_created' =>'boolean',
-                "image" => "required|mimes:jpeg,jpg,png"
-        ]);
         
-        if ($validation->fails()) {
-            // Throw error / response
-        }
-        */
+        // $validation = Validator::make($request->all(), [
+        //        'email' =>'string', 
+        //         'name' =>'required|string',
+        //         'age' =>'required|integer',
+        //         'username' =>'required|string|unique:profiles',
+        //         'Bio' =>'string',
+        //         'image' => 'mimes:png,jpg,jpeg',
+        //         'profile_created' =>'boolean',
+        //         "image" => "required|mimes:jpeg,jpg,png"
+        // ]);
+        
+        // if ($validation->fails()) {
+        //     // Throw error / response
+        // }
+        
         
         if($request->has('image')){
             $image = $request->file('image');
@@ -55,9 +56,9 @@ class ProfileController extends Controller
             return response()->json('image issue');
         }
 
-        /*
-        * The validation has been made on the top
-        * Uncomment that and then delete this validation
+        
+        // * The validation has been made on the top
+        // * Uncomment that and then delete this validation
             $fields = $request->validate([
                 'email' =>'string', 
                 'name' =>'required|string',
@@ -67,7 +68,7 @@ class ProfileController extends Controller
                 'image' => 'mimes:png,jpg,jpeg',
                 'profile_created' =>'boolean'
             ]);
-            */
+            
            
             
             $profile = Profile::create([
@@ -81,7 +82,7 @@ class ProfileController extends Controller
             ]);
         
             return response()->json([
-                
+                $profile
             ], 201);
             
     }

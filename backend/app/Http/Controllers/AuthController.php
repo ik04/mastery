@@ -29,7 +29,7 @@ class AuthController extends Controller
             return response()->json([
                 "errors" => $validation->errors()
                 
-                // If you want to return ONLY ONE error then,
+                 If you want to return ONLY ONE error then,
                 "error" => $validation->errors()->first()
             ]);
         }

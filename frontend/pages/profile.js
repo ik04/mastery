@@ -32,12 +32,8 @@ export async function getServerSideProps(context) {
     const instance = axios.create({
       withCredentials: true,
     })
-    const url = "http://localhost:8000/api/islog"
-    const resp = await instance.post(
-      url,
-      {},
-      { headers: { Cookie: `at=${cookie}` } }
-    )
+    const url = "http://localhost:8000/api/isLog"
+    const resp = await instance.post(url, {})
   } catch (error) {
     return {
       redirect: {
