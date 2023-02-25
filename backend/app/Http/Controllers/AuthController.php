@@ -27,19 +27,19 @@ class AuthController extends Controller
     }
     public function login(Request $request){
         $fields = $request->validate([
-            'email' =>'required|string',
+            'email' =>'required|string|exists:users',
             'password' =>'required|string',
         ]);
         $user = User::where('email',$fields['email'])->first();
-
-        if(!$user || !Hash::check($fields['password'],$user->password)){
-            return response(
+        if(!Hash::check($fields['password'],$user->password)){
+            return response()->json(
                 [
                     'message' => 'invalid credentials'
 
                 ]
                 );
-        }else{
+        }
+        
             $token = $user->createToken('myapptoken')->plainTextToken;
             $response = [
                 'user' => $user,
@@ -47,13 +47,13 @@ class AuthController extends Controller
             ];
             return response()->json($response,201)->withCookie(cookie()->forever('at',$token));
 
-        }
+        
     }
 
     public function getData(Request $request){
         if(!$request->hasCookie("at")){
             return response()->json([
-                'message' => "Unauthenticates1"
+                'message' => "Unauthenticated"
             ],401);
         }
         if($token = \Laravel\Sanctum\PersonalAccessToken::findToken($request->cookie("at"))){
@@ -66,7 +66,7 @@ class AuthController extends Controller
         }
         if(is_null($user)){
             return response()->json([
-                'message' => "Unauthenticates2"
+                'message' => "Unauthenticated"
             ],401);
         }
         return response() -> json([
