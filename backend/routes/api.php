@@ -24,11 +24,13 @@ Route::post('/result',[ProfileController::class,'searchResult']);
 
 
 Route::group(['middleware' =>['auth:sanctum']],function(){
-    Route::post("/isLog", function () {
+    // /verify-access-token
+    Route::post("/isLog", function () {  
         return response()->noContent();
     });
     Route::post('/search',[ProfileController::class,'searchUser']);
     Route::post("/logout",[AuthController::class,'logout']);
     Route::post("/profile",[ProfileController::class,'createProfile']);
+    // /profile-data
     Route::post('/profileData',[ProfileController::class,'checkProfile']);
 });
