@@ -75,24 +75,6 @@ class AuthController extends Controller
         ]);
     }
 
-    
-    public function loginTokenCheck(Request $request){
-        if(!$request->hasCookie("at")){
-            return response()->json([
-                'message' => "token not found"
-            ],401);
-        }
-        if($token = \Laravel\Sanctum\PersonalAccessToken::findToken($request->cookie("at"))){
-            $user = $token->tokenable;
-        }
-        else{
-            return response()->json([
-                'message' => "invalid token"
-            ],401);
-        }
-        return response()->noContent();
-    }
-
     public function logout(Request $request){
 
         $request->user()->currentAccessToken()->delete();
@@ -105,10 +87,6 @@ class AuthController extends Controller
 
     
 }
-
-
-
-
 
 /*
 TODO:
