@@ -14,32 +14,35 @@ const userPage = () => {
   const router = useRouter()
   const url = "http://localhost:8000/api/result"
   const { user } = router.query
-  useEffect(() => {
-    const getResults = async () => {
-      try {
-        const resp = await axios.post(url, { username: user })
-        console.log(resp.data)
-        const destructure = []
-        resp.data.forEach((element) => {
-          destructure.push(element)
-        })
-        destructure.map((info, i) => {
-          setName(info.name)
-          setBio(info.Bio)
-          setAge(info.age)
-          setImage(info.image)
-          setUsername(info.username)
-        })
-      } catch (error) {
-        console.log(error.message)
-      }
+
+  const getResults = async () => {
+    try {
+      console.log(user)
+      const resp = await axios.post(url, { username: user })
+      console.log(resp.data)
+      const destructure = []
+      resp.data.forEach((element) => {
+        destructure.push(element)
+      })
+      destructure.map((info, i) => {
+        setName(info.name)
+        setBio(info.Bio)
+        setAge(info.age)
+        setImage(info.image)
+        setUsername(info.username)
+      })
+    } catch (error) {
+      console.log(error.message)
     }
+  }
+  useEffect(() => {
+    if (!router.isReady) return
     getResults()
-  }, [])
+  }, [router.isReady])
   return (
     <div>
       <HomeNavbar />
-      <Profilepage realName={name} age={age} username={username} />
+      <Profilepage realName={name} age={age} username={username} bio={bio} />
     </div>
   )
 }

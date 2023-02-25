@@ -125,9 +125,9 @@ class ProfileController extends Controller
         try{
             
             $fields = $request->validate([
-                'username' =>'string',
+                'username' =>'required|string',
             ]);
-            // echo $fields['username'];
+            
                 $users = Profile::select('image','name','username','Bio','age')->where('username',$fields['username'])->get();
                 return response()->json($users,200);
         }catch(Exception $e){
