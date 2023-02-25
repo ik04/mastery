@@ -20,8 +20,9 @@ Route::post('/register',[AuthController::class,'register']);
 Route::post('/login',[AuthController::class,'login']);
 Route::get('/user',[AuthController::class,'getData']);
 Route::get('/profile',[ProfileController::class,'getProfileData']);
-
 Route::post('/result',[ProfileController::class,'searchResult']);
+
+
 Route::group(['middleware' =>['auth:sanctum']],function(){
     Route::post('/search',[ProfileController::class,'searchUser']);
     Route::post("/logout",[AuthController::class,'logout']);
