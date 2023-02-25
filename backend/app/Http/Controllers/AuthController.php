@@ -12,6 +12,29 @@ class AuthController extends Controller
             'email' =>'required|string|unique:users',
             'password' =>'required|string|confirmed',
         ]);
+        
+         /**
+         * 25th February, 2023 1:36pm (IST)
+         * Wellick
+         *
+         * Code with validator facade
+         */
+        /*
+        $validation = Validator::make($request->all(), [
+            'email' =>'required|string|unique:users',
+            'password' =>'required|string|confirmed',
+        ]);
+        
+        if ($validation->fails()) {
+            return response()->json([
+                "errors" => $validation->errors()
+                
+                // If you want to return ONLY ONE error then,
+                "error" => $validation->errors()->first()
+            ]);
+        }
+        */
+        
         $user = User::create([
             'email' => $fields['email'],
             'password' =>Hash::make($fields['password'])
@@ -75,24 +98,6 @@ class AuthController extends Controller
         ]);
     }
 
-    
-    public function loginTokenCheck(Request $request){
-        if(!$request->hasCookie("at")){
-            return response()->json([
-                'message' => "token not found"
-            ],401);
-        }
-        if($token = \Laravel\Sanctum\PersonalAccessToken::findToken($request->cookie("at"))){
-            $user = $token->tokenable;
-        }
-        else{
-            return response()->json([
-                'message' => "invalid token"
-            ],401);
-        }
-        return response()->noContent();
-    }
-
     public function logout(Request $request){
 
         $request->user()->currentAccessToken()->delete();
@@ -105,10 +110,6 @@ class AuthController extends Controller
 
     
 }
-
-
-
-
 
 /*
 TODO:
