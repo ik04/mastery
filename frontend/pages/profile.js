@@ -61,8 +61,5 @@ export async function getServerSideProps(context) {
 
 /* 
 TODO:
-1) redirect profile page to home and design home 
-2)get userprofile   
-3)make keys to easily access user data
-4)check if you should hide the network tab or not (research)
+-validate username to remove spaces and possible sql injections
 */

@@ -30,20 +30,20 @@ class ProfileController extends Controller
           * Validating image
           */
         
-        // $validation = Validator::make($request->all(), [
-        //        'email' =>'string', 
-        //         'name' =>'required|string',
-        //         'age' =>'required|integer',
-        //         'username' =>'required|string|unique:profiles',
-        //         'Bio' =>'string',
-        //         'image' => 'mimes:png,jpg,jpeg',
-        //         'profile_created' =>'boolean',
-        //         "image" => "required|mimes:jpeg,jpg,png"
-        // ]);
+        $validation = Validator::make($request->all(), [
+               'email' =>'string', 
+                'name' =>'required|string',
+                'age' =>'required|integer',
+                'username' =>'required|string|unique:profiles',
+                'Bio' =>'string',
+                'image' => 'mimes:png,jpg,jpeg',
+                'profile_created' =>'boolean',
+                "image" => "required|mimes:jpeg,jpg,png"
+        ]);
         
-        // if ($validation->fails()) {
-        //     return response()->json($validation->errors()->all());
-        // }
+        if ($validation->fails()) {
+            return response()->json($validation->errors()->all());
+        }
         
         
         if($request->has('image')){
@@ -56,28 +56,29 @@ class ProfileController extends Controller
             return response()->json('image issue');
         }
 
-        
+
         // * The validation has been made on the top
         // * Uncomment that and then delete this validation
         //! old code 
-            $fields = $request->validate([
-                'email' =>'string', 
-                'name' =>'required|string',
-                'age' =>'required|integer',
-                'username' =>'required|string|unique:profiles',
-                'Bio' =>'string',
-                'image' => 'mimes:png,jpg,jpeg',
-                'profile_created' =>'boolean'
-            ]);
+            // $fields = $request->validate([
+            //     'email' =>'string', 
+            //     'name' =>'required|string',
+            //     'age' =>'required|integer',
+            //     'username' =>'required|string|unique:profiles',
+            //     'Bio' =>'string',
+            //     'image' => 'mimes:png,jpg,jpeg',
+            //     'profile_created' =>'boolean'
+            // ]);
+            $validated = $validation->validated();
             
            
             
             $profile = Profile::create([
-                'email' => $fields['email'],
-                'name' => $fields['name'],
-                'age' =>$fields['age'],
-                'username' =>$fields['username'],
-                'Bio' =>$fields['Bio'],
+                'email' => $validated['email'],
+                'name' => $validated['name'],
+                'age' =>$validated['age'],
+                'username' =>$validated['username'],
+                'Bio' =>$validated['Bio'],
                 'image'=>$url,
                 'profile_created'=>true // Consider removing this from the table / database
             ]);

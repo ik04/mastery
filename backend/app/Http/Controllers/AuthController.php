@@ -4,22 +4,20 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
     public function register(Request $request){
-        $fields = $request->validate([
-            'email' =>'required|string|unique:users',
-            'password' =>'required|string|confirmed',
-        ]);
         
          /**
          * 25th February, 2023 1:36pm (IST)
          * Wellick
          *
          * Code with validator facade
+         * finished
          */
-        /*
+        
         $validation = Validator::make($request->all(), [
             'email' =>'required|string|unique:users',
             'password' =>'required|string|confirmed',
@@ -28,16 +26,16 @@ class AuthController extends Controller
         if ($validation->fails()) {
             return response()->json([
                 "errors" => $validation->errors()
-                
-                 If you want to return ONLY ONE error then,
-                "error" => $validation->errors()->first()
+                //  If you want to return ONLY ONE error then,
+                // "error" => $validation->errors()->first()
             ]);
         }
-        */
+        $validated = $validation->validate(); 
         
+    
         $user = User::create([
-            'email' => $fields['email'],
-            'password' =>Hash::make($fields['password'])
+            'email' => $validated['email'],
+            'password' =>Hash::make($validated['password'])
 
         ]);
         $token = $user->createToken('myapptoken')->plainTextToken;
