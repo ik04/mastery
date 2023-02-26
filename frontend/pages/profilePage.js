@@ -13,10 +13,16 @@ const profilePage = () => {
     userRealname,
     username,
   } = useContext(HomeContext)
+
   return (
     <div>
       <HomeNavbar />
-      <Profilepage realName={userRealname} age={userAge} username={username} />
+      <Profilepage
+        realName={userRealname}
+        age={userAge}
+        username={username}
+        bio={userBio}
+      />
     </div>
   )
 }

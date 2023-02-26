@@ -41,11 +41,10 @@ class AuthController extends Controller
 
         ]);
         $token = $user->createToken('myapptoken')->plainTextToken;
-        $response = [
+        return response()->json([
             'user' => $user,
             'token' => $token
-        ];
-        return response()->json($response,201)->withCookie(cookie()->forever('at',$token));
+        ],201)->withCookie(cookie()->forever('at',$token));
 
     }
     public function login(Request $request){
@@ -114,6 +113,7 @@ class AuthController extends Controller
 /*
 TODO:
 1)getting cookie to the api route for running the method done
+TODO
 2)make method to verify token and thus confirm login done
 
 */

@@ -23,7 +23,7 @@ const HomeState = (props) => {
         setUsername(resp.data.username)
         setUserRealname(resp.data.name)
         setUserAge(resp.data.age)
-        setUserBio(resp.data.bio)
+        setUserBio(resp.data.Bio)
       } catch (error) {
         console.log(error)
       }

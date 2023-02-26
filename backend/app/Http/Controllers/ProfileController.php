@@ -42,7 +42,7 @@ class ProfileController extends Controller
         // ]);
         
         // if ($validation->fails()) {
-        //     // Throw error / response
+        //     return response()->json($validation->errors()->all());
         // }
         
         
@@ -59,6 +59,7 @@ class ProfileController extends Controller
         
         // * The validation has been made on the top
         // * Uncomment that and then delete this validation
+        //! old code 
             $fields = $request->validate([
                 'email' =>'string', 
                 'name' =>'required|string',

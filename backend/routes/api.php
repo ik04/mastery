@@ -23,6 +23,7 @@ Route::get('/profile',[ProfileController::class,'getProfileData']);
 Route::post('/result',[ProfileController::class,'searchResult']);
 
 
+
 Route::group(['middleware' =>['auth:sanctum']],function(){
     // /verify-access-token
     Route::post("/isLog", function () {  
