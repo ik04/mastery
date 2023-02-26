@@ -114,8 +114,9 @@ export default Table
 /*
 TODO:
 1) make dynamic username pages (using useParam) and use the profilepage as template done
-2)make homenav better (make it an actual navbar lmao)x
+TODO
+2)make homenav better (make it an actual navbar lmao)
+TODO
 3) Lazy loading + Pagination to load all users
 4) after review frm armaan move onto new feature (messaging is the last)
-5) fix reload error in request
 */

@@ -80,7 +80,8 @@ class ProfileController extends Controller
                 'username' =>$validated['username'],
                 'Bio' =>$validated['Bio'],
                 'image'=>$url,
-                'profile_created'=>true // Consider removing this from the table / database
+                'profile_created'=>true // * Consider removing this from the table / database
+                //TODO: will make a new schema for table including exitsing table
             ]);
         
             return response()->json([
