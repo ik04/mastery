@@ -66,11 +66,6 @@ const Profilepage = (props) => {
               <span className="font-light text-gray-500">{props.age}</span>
             </h1>
             <p className="font-light text-gray-600 mt-3">{props.username}</p>
-
-            {/* <p className="mt-8 text-gray-500">
-              Solution Manager - Creative Tim Officer
-            </p>
-            <p className="mt-2 text-gray-500">University of Computer Science</p> */}
           </div>
 
           <div className="mt-12 flex flex-col justify-center">
