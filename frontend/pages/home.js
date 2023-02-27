@@ -78,8 +78,10 @@ export async function getServerSideProps(context) {
 }
 
 /*
-TODO:
+TODO: 
 
+?
+some future refactors and features
 1)design front end   working
 2)run the profile data route from this page by getting email from context done
 3)render elements dynamically done

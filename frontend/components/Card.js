@@ -30,7 +30,9 @@ const Card = (props) => {
           <div className="text-gray-900 font-bold text-xl mb-2">
             {props.title}
           </div>
-          <p className="text-gray-700 text-base">{props.desc.substr(0, 50)}</p>
+          <p className="text-gray-700 text-base whitespace-nowrap">
+            {props.desc}
+          </p>
         </div>
         <div className="flex items-center">
           <img

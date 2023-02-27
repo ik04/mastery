@@ -11,11 +11,7 @@ const Navbar = () => {
       const url = "http://localhost:8000/api/logout"
       const resp = await axios.post(url)
       console.log(resp)
-      console.log("it runs")
-
-      setTimeout(() => {
-        location.href = "/"
-      }, 2000)
+      location.href = "/"
     } catch (error) {
       console.log(error.response)
     }

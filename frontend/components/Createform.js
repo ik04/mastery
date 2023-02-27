@@ -18,9 +18,7 @@ const Createform = () => {
         username: username,
       })
       if ((await resp).status == 201) {
-        setTimeout(() => {
-          location.href = "/home"
-        }, 2000)
+        location.href = "/home"
       }
     } catch (error) {
       console.log(error.message)
