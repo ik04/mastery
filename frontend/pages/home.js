@@ -27,12 +27,14 @@ const home = () => {
   }, [])
   return (
     <div className="overflow-hidden">
-      <HomeNavbar />
-      <Sidebar title="Mastery" />
-      <div className="absolute top-11 flex space-x-11  translate-x-52 mx-40 my-14 ">
+      <div className="fixed w-screen z-50">
+        <HomeNavbar />
+        <Sidebar title="Mastery" />
+      </div>
+      <div className="absolute top-11 flex flex-col space-y-11 translate-x-52 mx-40 my-14 ">
         {posts.map((element) => {
           return (
-            <div className="mb-16 ">
+            <div className="flex-row">
               <Card
                 title={element.title}
                 desc={element.description}

@@ -10,7 +10,7 @@ const profile = (props) => {
     <div>
       <Navbar />
       <h1 className="text-6xl text-center font-sans mt-3">Welcome {email}</h1>
-      <p className="text-4xl text-center">Let's Test Profiling</p>
+      <p className="text-4xl text-center">Let's Register Your Profile</p>
       <div>
         <Profileform />
       </div>
