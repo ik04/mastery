@@ -23,11 +23,10 @@ Route::get('/user',[AuthController::class,'getData']);
 Route::get('/profile',[ProfileController::class,'getProfileData']);
 Route::post('/result',[ProfileController::class,'searchResult']);
 
-Route::get("/index",[PostController::class,'index']);
+// Route::get("/index",[PostController::class,'index']);
 
-
+// * auth routes
 Route::group(['middleware' =>['auth:sanctum']],function(){
-    // /verify-access-token
     Route::post("/isLog", function () {  
         return response()->noContent();
     });
@@ -35,8 +34,9 @@ Route::group(['middleware' =>['auth:sanctum']],function(){
     Route::post("/logout",[AuthController::class,'logout']);
     Route::post("/profile",[ProfileController::class,'createProfile']);
     Route::post("/create-post",[PostController::class,'createPost']);
-    // /profile-data kebab case
+    Route::get("/get-all-posts",[PostController::class,'getAllPosts']);
     Route::post('/profileData',[ProfileController::class,'checkProfile']);
+    // /profile-data kebab case
 });
 
 // TODO: make route for creating post with schema

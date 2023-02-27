@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -14,18 +15,18 @@ class PostController extends Controller
     }
     public function createPost(Request $request){
         $validation = Validator::make($request->all(), [
-            "title"=>"required|string",
+        "title"=>"required|string",
         "description"=>"required|string",
-        "uuid"=>"string",
         "username"=>"required|string",
-        "date"=>"required|date_format:m/d/Y",
-        "time"=>"required|date_format:H:i",
+        "uuid"=>"string",
+        "date"=>"date_format:m/d/Y",
+        "time"=>"date_format:H:i",
         ]);
 
         if ($validation->fails()) {
             return response()->json([
                 "errors" => $validation->errors()
-            ]);
+            ],400);
         }
         $validated = $validation->validated(); 
         
@@ -33,9 +34,14 @@ class PostController extends Controller
         "description"=>$validated["description"],
         "uuid"=>uniqid(),
         "username"=>$validated["username"],
-        "date"=>$validated["date"],
-        "time"=>$validated["time"],]);
+        "date"=>date('m/d/Y'),
+        "time"=>date('H:i'),]);
         return response()->json($post,201);
+    }
 
+    public function getAllPosts(Request $request){
+        $posts = Post::select("title","description","uuid","date","time",)->get();
+        return response()->json($posts,200);
+       
     }
 }
