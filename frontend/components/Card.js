@@ -4,20 +4,20 @@ import React, { useEffect, useState } from "react"
 const Card = (props) => {
   //! remove this and shift pfp to backend
   const [image, setImage] = useState()
-  useEffect(() => {
-    const url = "http://localhost:8000/api/result"
-    const getAvatar = async () => {
-      const resp = await axios.post(url, { username: props.author })
-      const destructure = []
-      resp.data.forEach((element) => {
-        destructure.push(element)
-      })
-      destructure.map((info, i) => {
-        setImage(info.image)
-      })
-    }
-    getAvatar()
-  }, [])
+  // useEffect(() => {
+  //   const url = "http://localhost:8000/api/result"
+  //   const getAvatar = async () => {
+  //     const resp = await axios.post(url, { username: props.author })
+  //     const destructure = []
+  //     resp.data.forEach((element) => {
+  //       destructure.push(element)
+  //     })
+  //     destructure.map((info, i) => {
+  //       setImage(info.image)
+  //     })
+  //   }
+  //   getAvatar()
+  // }, [])
   return (
     <div className=" max-w-sm w-full lg:max-w-full lg:flex static ">
       {/* <div
@@ -35,14 +35,12 @@ const Card = (props) => {
         <div className="flex items-center">
           <img
             className="w-10 h-10 rounded-full mr-4"
-            src={"http://localhost:8000" + image}
+            src={"http://localhost:8000" + props.img}
             alt="Avatar "
           />
           <div className="text-sm">
             <p className="text-gray-900 leading-none">{props.author}</p>
-            <p className="text-gray-600">
-              {props.date} at {props.time}
-            </p>
+            <p className="text-gray-600">{props.date}</p>
           </div>
         </div>
       </div>

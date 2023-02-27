@@ -23,7 +23,6 @@ class PostController extends Controller
         "uuid"=>"string",
         "date"=>"date_format:m/d/Y",
         "time"=>"date_format:H:i",
-
         ]);
 
         if ($validation->fails()) {
@@ -32,27 +31,29 @@ class PostController extends Controller
             ],400);
         }
         $validated = $validation->validated(); 
-        // $profile_pic  = Profile::select("image")->where("username",$validated["username"]);
-        
+        $profile_pic = Profile::select('image')->where('username',$validated['username'])->get();
+        $image =  $profile_pic[0];
+        $image = $image['image'];
+        // echo $image;
+        // date_default_timezone_set('India/Chennai');
         $post = Post::create(["title"=>$validated["title"],
         "description"=>$validated["description"],
         "uuid"=>uniqid(),
         "username"=>$validated["username"],
+        "profile_pic"=>$image,
         "date"=>date('m/d/Y'),
-        "time"=>date('H:i'),]);
+        "time"=>date('H:i',time()),]);
         return response()->json($post,201);
     }
 
     public function getAllPosts(Request $request){
-        $posts = Post::select("title","description","username","uuid","date","time",)->get();
+        $posts = Post::select("title","description","username","uuid","date","profile_pic")->get();
         return response()->json($posts,200);
-       
     }
     public function getUserPosts(Request $request){
         $fields = $request->validate([
             'username' =>'string',
         ]);
-
         $posts = Post::select("title","description","username","uuid","date","time",)->where("username",$fields["username"])->get();
         return response()->json($posts,200);
        

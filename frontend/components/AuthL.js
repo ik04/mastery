@@ -19,9 +19,8 @@ const AuthL = (props) => {
         password: password,
       })
       console.log(resp.data)
-      setTimeout(() => {
-        location.href = "/profile"
-      }, 2000)
+
+      location.href = "/profile"
     } catch (error) {
       console.log(error)
     }

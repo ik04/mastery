@@ -37,7 +37,6 @@ class ProfileController extends Controller
                 'Bio' =>'string',
                 'image' => 'mimes:png,jpg,jpeg',
                 'profile_created' =>'boolean',
-                "image" => "required|mimes:jpeg,jpg,png"
         ]);
         
         if ($validation->fails()) {

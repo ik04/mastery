@@ -13,7 +13,7 @@ const home = () => {
     const getAllPosts = async () => {
       try {
         const resp = await axios.get(url, {})
-        // console.log(resp.data)
+        console.log(resp.data)
         let post = []
         resp.data.forEach((element, i) => {
           post.push(element)
@@ -38,7 +38,7 @@ const home = () => {
                 desc={element.description}
                 author={element.username}
                 date={element.date}
-                time={element.time}
+                img={element.profile_pic}
               />
             </div>
           )
