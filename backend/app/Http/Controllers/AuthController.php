@@ -30,7 +30,7 @@ class AuthController extends Controller
                 // "error" => $validation->errors()->first()
             ]);
         }
-        $validated = $validation->validate(); 
+        $validated = $validation->validated(); 
         
     
         $user = User::create([
@@ -55,7 +55,6 @@ class AuthController extends Controller
             return response()->json(
                 [
                     'message' => 'invalid credentials'
-
                 ]
                 );
         }

@@ -8,7 +8,7 @@ const create = () => {
     <div className="overflow-x-hidden">
       <HomeNavbar />
       <Sidebar title="Create" />
-      <div className="relative ">
+      <div className="relative overflow-x-hidden ">
         <Createform />
       </div>
     </div>
