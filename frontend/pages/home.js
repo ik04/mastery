@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import HomeNavbar from "@/components/HomeNavbar"
 import Sidebar from "@/components/Sidebar"
 import Card from "@/components/Card"
@@ -7,14 +7,18 @@ import { GlobalContext } from "@/contexts/GlobalContext"
 
 const home = () => {
   const url = "http://localhost:8000/api/get-all-posts"
-  // const { Token, updateToken } = useContext(GlobalContext)
+  const [posts, setPosts] = useState([])
 
   useEffect(() => {
-    // console.log(props.token)
     const getAllPosts = async () => {
       try {
         const resp = await axios.get(url, {})
-        console.log(resp.data)
+        // console.log(resp.data)
+        let post = []
+        resp.data.forEach((element, i) => {
+          post.push(element)
+        })
+        setPosts(post)
       } catch (error) {
         console.log(error.message)
       }
@@ -25,8 +29,20 @@ const home = () => {
     <div>
       <HomeNavbar />
       <Sidebar title="Mastery" />
-      <div className="absolute right-56 my-14 ">
-        <Card />
+      <div className="absolute right-72 my-14 ">
+        {posts.map((element) => {
+          return (
+            <div className=" mb-16">
+              <Card
+                title={element.title}
+                desc={element.description}
+                author={element.username}
+                date={element.date}
+                time={element.time}
+              />
+            </div>
+          )
+        })}
       </div>
     </div>
   )

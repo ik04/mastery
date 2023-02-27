@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Profile;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -18,9 +19,11 @@ class PostController extends Controller
         "title"=>"required|string",
         "description"=>"required|string",
         "username"=>"required|string",
+        "profile_pic"=>"string",
         "uuid"=>"string",
         "date"=>"date_format:m/d/Y",
         "time"=>"date_format:H:i",
+
         ]);
 
         if ($validation->fails()) {
@@ -29,6 +32,7 @@ class PostController extends Controller
             ],400);
         }
         $validated = $validation->validated(); 
+        // $profile_pic  = Profile::select("image")->where("username",$validated["username"]);
         
         $post = Post::create(["title"=>$validated["title"],
         "description"=>$validated["description"],
