@@ -40,7 +40,7 @@ class PostController extends Controller
     }
 
     public function getAllPosts(Request $request){
-        $posts = Post::select("title","description","uuid","date","time",)->get();
+        $posts = Post::select("title","description","username","uuid","date","time",)->get();
         return response()->json($posts,200);
        
     }

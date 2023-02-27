@@ -22,6 +22,7 @@ Route::post('/login',[AuthController::class,'login']);
 Route::get('/user',[AuthController::class,'getData']);
 Route::get('/profile',[ProfileController::class,'getProfileData']);
 Route::post('/result',[ProfileController::class,'searchResult']);
+Route::get("/get-all-posts",[PostController::class,'getAllPosts']);
 
 // Route::get("/index",[PostController::class,'index']);
 
@@ -34,7 +35,6 @@ Route::group(['middleware' =>['auth:sanctum']],function(){
     Route::post("/logout",[AuthController::class,'logout']);
     Route::post("/profile",[ProfileController::class,'createProfile']);
     Route::post("/create-post",[PostController::class,'createPost']);
-    Route::get("/get-all-posts",[PostController::class,'getAllPosts']);
     Route::post('/profileData',[ProfileController::class,'checkProfile']);
     // /profile-data kebab case
 });

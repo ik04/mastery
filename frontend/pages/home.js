@@ -3,8 +3,24 @@ import HomeNavbar from "@/components/HomeNavbar"
 import Sidebar from "@/components/Sidebar"
 import Card from "@/components/Card"
 import axios from "axios"
+import { GlobalContext } from "@/contexts/GlobalContext"
 
 const home = () => {
+  const url = "http://localhost:8000/api/get-all-posts"
+  // const { Token, updateToken } = useContext(GlobalContext)
+
+  useEffect(() => {
+    // console.log(props.token)
+    const getAllPosts = async () => {
+      try {
+        const resp = await axios.get(url, {})
+        console.log(resp.data)
+      } catch (error) {
+        console.log(error.message)
+      }
+    }
+    getAllPosts()
+  }, [])
   return (
     <div>
       <HomeNavbar />
