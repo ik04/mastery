@@ -42,7 +42,13 @@ const userPage = () => {
   return (
     <div>
       <HomeNavbar />
-      <Profilepage realName={name} age={age} username={username} bio={bio} />
+      <Profilepage
+        realName={name}
+        age={age}
+        username={username}
+        bio={bio}
+        img={image}
+      />
     </div>
   )
 }

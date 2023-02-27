@@ -32,6 +32,8 @@ Route::group(['middleware' =>['auth:sanctum']],function(){
     Route::post('/search',[ProfileController::class,'searchUser']);
     Route::post("/logout",[AuthController::class,'logout']);
     Route::post("/profile",[ProfileController::class,'createProfile']);
-    // /profile-data
+    // /profile-data kebab case
     Route::post('/profileData',[ProfileController::class,'checkProfile']);
 });
+
+// TODO: make route for creating post with schema

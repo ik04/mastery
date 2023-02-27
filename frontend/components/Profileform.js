@@ -22,6 +22,7 @@ const Profileform = () => {
       formdata.append("username", username)
       formdata.append("Bio", bio)
       formdata.append("image", image)
+
       const resp = await axios.post(url, formdata)
       console.log(resp)
       setTimeout(() => {

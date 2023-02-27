@@ -26,7 +26,7 @@ const Profilepage = (props) => {
               </div>
             </div>
             <div className="relative">
-              <div className="w-48 h-48 bg-indigo-100 mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center text-indigo-500">
+              {/* <div className="w-48 h-48 bg-indigo-100 mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center text-indigo-500">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-24 w-24"
@@ -39,7 +39,12 @@ const Profilepage = (props) => {
                     clipRule="evenodd"
                   />
                 </svg>
-              </div>
+              </div> */}
+              <img
+                className="w-48 h-48 mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center"
+                src={"http://localhost:8000" + props.img}
+                alt=""
+              />
             </div>
 
             <div className="space-x-8 flex justify-between mt-32 md:mt-0 md:justify-center">

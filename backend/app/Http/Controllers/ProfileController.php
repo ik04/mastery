@@ -15,13 +15,11 @@ use Exception;
 use Hamcrest\Core\IsEqual;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use PHPUnit\Framework\Constraint\IsEmpty;
 
-use function PHPUnit\Framework\isEmpty;
-use function PHPUnit\Framework\isNull;
 
 class ProfileController extends Controller
 {
+    
     public function createProfile(Request $request){
          /**
           * 25th February, 2023 1:40pm (IST)
@@ -29,6 +27,7 @@ class ProfileController extends Controller
           *
           * Validating image
           */
+
         
         $validation = Validator::make($request->all(), [
                'email' =>'string', 
@@ -42,7 +41,7 @@ class ProfileController extends Controller
         ]);
         
         if ($validation->fails()) {
-            return response()->json($validation->errors()->all());
+            return response()->json($validation->errors()->all(),400);
         }
         
         
@@ -70,9 +69,6 @@ class ProfileController extends Controller
             //     'profile_created' =>'boolean'
             // ]);
             $validated = $validation->validated();
-            
-           
-            
             $profile = Profile::create([
                 'email' => $validated['email'],
                 'name' => $validated['name'],
@@ -87,7 +83,6 @@ class ProfileController extends Controller
             return response()->json([
                 $profile
             ], 201);
-            
     }
 
     public function checkProfile(Request $request){
@@ -164,6 +159,8 @@ class ProfileController extends Controller
         }
         
         }
+
+        
     public function searchResult(Request $request){
         try{
             

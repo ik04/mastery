@@ -22,6 +22,7 @@ const profilePage = () => {
         age={userAge}
         username={username}
         bio={userBio}
+        img={userimg}
       />
     </div>
   )

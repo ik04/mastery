@@ -5,7 +5,7 @@ import React from "react"
 
 const create = () => {
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <HomeNavbar />
       <Sidebar title="Create" />
       <div className="relative ">
