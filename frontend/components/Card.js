@@ -17,9 +17,9 @@ const Card = (props) => {
       })
     }
     getAvatar()
-  })
+  }, [])
   return (
-    <div className=" max-w-sm w-full lg:max-w-full lg:flex">
+    <div className=" max-w-sm w-full lg:max-w-full lg:flex static ">
       {/* <div
         className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
         style={{ "background-image": "url('/img/card-left.jpg')" }}
@@ -30,7 +30,7 @@ const Card = (props) => {
           <div className="text-gray-900 font-bold text-xl mb-2">
             {props.title}
           </div>
-          <p className="text-gray-700 text-base">{props.desc}</p>
+          <p className="text-gray-700 text-base">{props.desc.substr(0, 50)}</p>
         </div>
         <div className="flex items-center">
           <img

@@ -134,8 +134,6 @@ class ProfileController extends Controller
         );
     }
     
-
-    
     public function searchUser(Request $request){
         try{
             

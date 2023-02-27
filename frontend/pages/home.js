@@ -26,13 +26,13 @@ const home = () => {
     getAllPosts()
   }, [])
   return (
-    <div>
+    <div className="overflow-hidden">
       <HomeNavbar />
       <Sidebar title="Mastery" />
-      <div className="absolute right-72 my-14 ">
+      <div className="absolute top-11 flex space-x-11  translate-x-52 mx-40 my-14 ">
         {posts.map((element) => {
           return (
-            <div className=" mb-16">
+            <div className="mb-16 ">
               <Card
                 title={element.title}
                 desc={element.description}

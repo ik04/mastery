@@ -48,4 +48,13 @@ class PostController extends Controller
         return response()->json($posts,200);
        
     }
+    public function getUserPosts(Request $request){
+        $fields = $request->validate([
+            'username' =>'string',
+        ]);
+
+        $posts = Post::select("title","description","username","uuid","date","time",)->where("username",$fields["username"])->get();
+        return response()->json($posts,200);
+       
+    }
 }

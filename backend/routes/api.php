@@ -20,9 +20,12 @@ use App\Http\Controllers\ProfileController;
 Route::post('/register',[AuthController::class,'register']);
 Route::post('/login',[AuthController::class,'login']);
 Route::get('/user',[AuthController::class,'getData']);
+
 Route::get('/profile',[ProfileController::class,'getProfileData']);
 Route::post('/result',[ProfileController::class,'searchResult']);
+
 Route::get("/get-all-posts",[PostController::class,'getAllPosts']);
+Route::post("/get-user-posts",[PostController::class,'getUserPosts']);
 
 // Route::get("/index",[PostController::class,'index']);
 
